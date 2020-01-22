@@ -1,6 +1,7 @@
 import asyncio
-
+import os
 import discord
+
 from discord import Member
 
 client = discord.Client()
@@ -61,4 +62,4 @@ async def on_message(message):
                     await message.channel.send('{} сообщений удалено.'.format(len(deleted)-1))
 
 
-client.run('NjY5MjQ5NzQ4OTA5MTYyNTEz.XidLUw.R5WqeWD-1jPpkKRgckS9I9P9UnM')
+token = os.environ.get('BOT_TOKEN')
