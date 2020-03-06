@@ -63,7 +63,7 @@ async def on_message(message):
     if '+лохи' in message.content:  
         await message.channel.send('```Главный лох:```'
                                    '```Илюз Даниэль Шамуэливич.```'
-                                   '```Алексаненеков Меросик - хороший мальчик.```'                                
+                                   '```Алексаненеков Меросик - хороший мальчик.```')                                
 
 
 token = os.environ.get('BOT_TOKEN')
