@@ -60,7 +60,7 @@ async def on_message(message):
                     count = int(args[1]) + 1
                     deleted = await message.channel.purge(limit=count, check=is_not_pinned)
                     await message.channel.send('{} сообщений удалено.'.format(len(deleted)-1))
-    if '+лохи' in message.content:  
+    if '+lox' in message.content:  
         await message.channel.send('```Главный лох:```'
                                    '```Илюз Даниэль Шамуэливич.```'
                                    '```Алексаненеков Меросик - хороший мальчик.```')                                
