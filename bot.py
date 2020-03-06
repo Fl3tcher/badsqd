@@ -29,7 +29,7 @@ def is_not_pinned(mess):
 async def on_message(message):
     if message.author.bot:
         return
-    if '+help' in message.content:
+    if '+help' in message.content:  
         await message.channel.send('```Функционал бота:```'
                                    '```+help - информация по функционалу бота.```'
                                    '```+ahelp - информация по командам модератора.```'
@@ -56,10 +56,14 @@ async def on_message(message):
         if message.author.permissions_in(message.channel).manage_messages:
             args = message.content.split(' ')
             if len(args) == 2:
-                if args[1].isdigit():
+                if args[1].isdigit():1
                     count = int(args[1]) + 1
                     deleted = await message.channel.purge(limit=count, check=is_not_pinned)
                     await message.channel.send('{} сообщений удалено.'.format(len(deleted)-1))
+    if '+лохи' in message.content:  
+        await message.channel.send('```Главный лох:```'
+                                   '```Илюз Даниэль Шамуэливич.```'
+                                   '```Алексаненеков Меросик - хороший мальчик.```'                                
 
 
 token = os.environ.get('BOT_TOKEN')
