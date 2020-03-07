@@ -59,11 +59,7 @@ async def on_message(message):
                 if args[1].isdigit():1
                     count = int(args[1]) + 1
                     deleted = await message.channel.purge(limit=count, check=is_not_pinned)
-                    await message.channel.send('{} сообщений удалено.'.format(len(deleted)-1))
-    if '+lox' in message.content:  
-        await message.channel.send('```Главный лох:```'
-                                   '```Илюз Даниэль Шамуэливич.```'
-                                   '```Алексаненеков Меросик - хороший мальчик.```')                                
+                    await message.channel.send('{} сообщений удалено.'.format(len(deleted)-1))                              
 
 
 token = os.environ.get('BOT_TOKEN')
