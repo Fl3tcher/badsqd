@@ -55,21 +55,7 @@ async def on_message(message):
             if len(args) == 2:
                 if args[1].isdigit():
                     count = int(args[1]) + 1
-                    deleted = await message.channel.purge(limit=count, check=is_not_pinned)
-                    await message.channel.send('{} сообщений удалено.'.format(len(deleted)-1))
-
-@client.command()
-@commands.has_any_role("Keyblade Master","Foretellers")
-async def ban (ctx, member:discord.User=None, reason =None):
-    if member == None or member == ctx.message.author:
-        await ctx.channel.send("You cannot ban yourself")
-        return
-    if reason == None:
-        reason = "For being a jerk!"
-    message = f"You have been banned from {ctx.guild.name} for {reason}"
-    await member.send(message)
-    # await ctx.guild.ban(member, reason=reason)
-    await ctx.channel.send(f"{member} is banned!")                               
+                    deleted = await message.channel.purge(limit=count, check=is_not_pinned)                           
 
 
 token = os.environ.get('BOT_TOKEN')
