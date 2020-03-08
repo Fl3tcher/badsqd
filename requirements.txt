@@ -1,8 +1,5 @@
 discord.py
-discord.py[voice]
 aiohttp
 asyncio
 websockets
-youtube-dl
-simpleeval
 chardet
