@@ -41,12 +41,12 @@ async def on_message(message):
                                       color=0x22a7f0)
                 embed.add_field(name='Дата входа на сервер', value=member.joined_at.strftime('%d/%m/%Y'),
                                 inline=True)
-                role.name = ''
+                role_name = ''
                 for role in member.roles:
                     if not role.is_default():
-                        role.name += '{} \r\n'.format(role.mention)
-                if role.name:
-                    embed.add_field(name='Роли', value=role.name, inline=True)
+                        role_name += '{} \r\n'.format(role.mention)
+                if role_name:
+                    embed.add_field(name='Роли', value=role_name, inline=True)
                 embed.set_thumbnail(url=member.avatar_url)
                 mess = await message.channel.send(embed=embed)
     if message.content.startswith('.clear'):
