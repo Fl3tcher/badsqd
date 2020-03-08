@@ -15,7 +15,7 @@ async def on_ready():
 
 async def status_task():
     while True:
-        await client.change_presence(activity=discord.Game('+help'), status=discord.Status.online)
+        await client.change_presence(activity=discord.Game('.help'), status=discord.Status.online)
         await asyncio.sleep(10)
         await client.change_presence(activity=discord.Game('wintertime sadness'), status=discord.Status.online)
         await asyncio.sleep(10)
@@ -29,12 +29,9 @@ def is_not_pinned(mess):
 async def on_message(message):
     if message.author.bot:
         return
-    if '+help' in message.content:  
-        await message.channel.send('```Функционал бота:```'
-                                   '```+help - информация по функционалу бота.```'
-                                   '```+ahelp - информация по командам модератора.```'
-                                   '```+id <имя> - информация о пользователе сервера.```')
-    if message.content.startswith('+id'):
+    if '.help' in message.content:  
+        await message.channel.send('')
+    if message.content.startswith('.stats'):
         args = message.content.split(' ')
         if len(args) == 2:
             member: Member = discord.utils.find(lambda m: args[1] in m.name, message.guild.members)
@@ -52,14 +49,27 @@ async def on_message(message):
                     embed.add_field(name='Роли', value=rollen, inline=True)
                 embed.set_thumbnail(url=member.avatar_url)
                 mess = await message.channel.send(embed=embed)
-    if message.content.startswith('+clear'):
+    if message.content.startswith('.clear'):
         if message.author.permissions_in(message.channel).manage_messages:
             args = message.content.split(' ')
             if len(args) == 2:
                 if args[1].isdigit():
                     count = int(args[1]) + 1
                     deleted = await message.channel.purge(limit=count, check=is_not_pinned)
-                    await message.channel.send('{} сообщений удалено.'.format(len(deleted)-1))                               
+                    await message.channel.send('{} сообщений удалено.'.format(len(deleted)-1))
+
+@client.command()
+@commands.has_any_role("Keyblade Master","Foretellers")
+async def ban (ctx, member:discord.User=None, reason =None):
+    if member == None or member == ctx.message.author:
+        await ctx.channel.send("You cannot ban yourself")
+        return
+    if reason == None:
+        reason = "For being a jerk!"
+    message = f"You have been banned from {ctx.guild.name} for {reason}"
+    await member.send(message)
+    # await ctx.guild.ban(member, reason=reason)
+    await ctx.channel.send(f"{member} is banned!")                               
 
 
 token = os.environ.get('BOT_TOKEN')
