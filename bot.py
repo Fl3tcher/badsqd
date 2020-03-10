@@ -376,4 +376,5 @@ class BotCog(Cog, name="Bot"):
 
 def setup(bot: Bot) -> None:
     """Load the Bot cog."""
-    bot.add_cog(BotCog(bot))
+    token = os.environ.get('BOT_TOKEN')
+    client.run(str(token))
