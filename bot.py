@@ -17,9 +17,6 @@ async def on_ready():
 async def status_task():
     while True:
         await client.change_presence(activity=discord.Game('.help'), status=discord.Status.online)
-        await asyncio.sleep(10)
-        await client.change_presence(activity=discord.Game('wintertime sadness'), status=discord.Status.online)
-        await asyncio.sleep(10)
 
 
 def is_not_pinned(mess):
@@ -32,6 +29,8 @@ async def on_message(message):
         return
     if '.help' in message.content:  
         await message.channel.send('')
+    if '.link' in message.content:  
+        await message.channel.send('https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624')
     if message.content.startswith('.stats'):
         args = message.content.split(' ')
         if len(args) == 2:
