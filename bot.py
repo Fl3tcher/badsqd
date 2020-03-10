@@ -5,7 +5,6 @@ import discord
 from discord import Member
 
 client = discord.Client()
-token = os.environ.get('BOT_TOKEN')
 
 
 @client.event
@@ -29,8 +28,8 @@ async def on_message(message):
         return
     if '.help' in message.content:  
         await message.channel.send('')
-    if '.link' in message.content:  
-        await message.channel.send('https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624')
+    if message.content.startswith('.link'):
+        await message.channel.send('https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624')        
     if message.content.startswith('.stats'):
         args = message.content.split(' ')
         if len(args) == 2:
@@ -57,4 +56,5 @@ async def on_message(message):
                     count = int(args[1]) + 1
                     deleted = await message.channel.purge(limit=count, check=is_not_pinned)
 
+token = os.environ.get('BOT_TOKEN')
 client.run(str(token))
