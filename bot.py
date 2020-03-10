@@ -5,6 +5,7 @@ import discord
 from discord import Member
 
 client = discord.Client()
+token = os.environ.get('BOT_TOKEN')
 
 
 @client.event
@@ -56,25 +57,5 @@ async def on_message(message):
                 if args[1].isdigit():
                     count = int(args[1]) + 1
                     deleted = await message.channel.purge(limit=count, check=is_not_pinned)
-    if message.content.startswith('.about'):
-        args = message.content.split(' ')
-        if len(args) == 2:
-            member: Member = discord.utils.find(lambda m: args[1] in m.name, message.guild.members)
-            if member:
-        embed = Embed(
-            description="A utility bot designed just for the Python server! Try `!help` for more info.",
-            url="https://github.com/python-discord/bot"
-        )
 
-        embed.add_field(name="Total Users", value=str(len(self.bot.get_guild(Guild.id).members)))
-        embed.set_author(
-            name="Python Bot",
-            url="https://github.com/python-discord/bot",
-            icon_url=URLs.bot_avatar
-        )
-
-        log.info(f"{ctx.author} called !about. Returning information about the bot.")
-        await ctx.send(embed=embed)
-
-token = os.environ.get('BOT_TOKEN')
 client.run(str(token))
