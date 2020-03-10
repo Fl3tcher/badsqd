@@ -56,7 +56,7 @@ async def on_message(message):
                 if args[1].isdigit():
                     count = int(args[1]) + 1
                     deleted = await message.channel.purge(limit=count, check=is_not_pinned)
-    if message.content.startswith('.stats'):
+    if message.content.startswith('.about'):
         args = message.content.split(' ')
         if len(args) == 2:
             member: Member = discord.utils.find(lambda m: args[1] in m.name, message.guild.members)
