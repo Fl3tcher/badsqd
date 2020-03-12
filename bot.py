@@ -24,7 +24,7 @@ def is_not_pinned(mess):
     return not mess.pinned
 
 
-@bot.command()
+@client.command()
 async def bot(ctx):
     embed=discord.Embed(title='discord.gg', 
                         url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624', 
