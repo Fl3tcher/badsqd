@@ -36,7 +36,7 @@ async def on_message(message):
         embed.add_field(name='discord.gg', 
                         url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624', inline=True)
         embed.add_field(name='telegram', inline=False)
-        embed.set_footer(text='Developer : Wizel\')
+        embed.set_footer(text='Developer : Wizel')
         mess = await message.channel.send(embed=embed)
     if message.content.startswith('.stats'):
         args = message.content.split(' ')
