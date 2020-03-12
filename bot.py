@@ -6,7 +6,7 @@ from discord.ext import commands
 from discord import Member
 
 client = discord.Client()
-client = commands.Bot(command_prefix='-')
+client = commands.Bot(command_prefix='.')
 token = os.environ.get('BOT_TOKEN')
 
 
@@ -26,7 +26,7 @@ def is_not_pinned(mess):
 
 
 @client.command()
-async def bot(ctx):
+async def link(ctx):
     embed=discord.Embed(title='discord.gg', 
                         url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624', 
                         color=0x8080ff)
@@ -49,7 +49,7 @@ async def on_message(message):
             if member:
                 embed = discord.Embed(title='Информация'.format(member.name),
                                       description='BAD: Полная информация о пользователе {}'.format(member.mention),
-                                      color=0xcccccc)
+                                      color=0x8080ff)
                 embed.add_field(name='Дата входа на сервер', value=member.joined_at.strftime('%d/%m/%Y'),
                                 inline=True)
                 role_name = ''
