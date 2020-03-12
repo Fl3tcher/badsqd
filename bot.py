@@ -4,6 +4,7 @@ import discord
 
 from discord import Member
 
+client = commands.Bot(command_prefix='.', case_insensitive=True)
 client = discord.Client()
 token = os.environ.get('BOT_TOKEN')
 
@@ -23,19 +24,23 @@ def is_not_pinned(mess):
     return not mess.pinned
 
 
+@bot.command()
+async def bot(ctx):
+    embed=discord.Embed(title='discord.gg', 
+                        url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624', 
+                        color=0x8080ff)
+    embed.set_thumbnail(url='https://i.imgur.com/SbmwC1T.jpg')
+    embed.set_footer(text='Developer : Wizel')
+    
+    await ctx.send(embed=embed)
+
+
 @client.event
 async def on_message(message):
     if message.author.bot:
         return
     if '.help' in message.content:  
-        await message.channel.send('')
-    if message.content('.link'):
-        embed=discord.Embed(title='discord.gg', 
-                            url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624', 
-                            color=0x8080ff)
-        embed.set_thumbnail(url='https://i.imgur.com/SbmwC1T.jpg')
-        embed.set_footer(text='Developer : Wizel')
-        await self.client.say(embed=embed)  
+        await message.channel.send('') 
     if message.content.startswith('.stats'):
         args = message.content.split(' ')
         if len(args) == 2:
