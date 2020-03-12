@@ -35,7 +35,7 @@ async def on_message(message):
                             color=0x8080ff)
         embed.set_thumbnail(url="https://i.imgur.com/SbmwC1T.jpg")
         embed.set_footer(text="Developer : Wizel")
-        await self.bot.say(embed=embed)  
+        await self.client.say(embed=embed)  
     if message.content.startswith('.stats'):
         args = message.content.split(' ')
         if len(args) == 2:
