@@ -29,7 +29,12 @@ async def on_message(message):
     if message.author.bot:
         return
     if '.help' in message.content:  
-        await message.channel.send('') 
+        await message.channel.send('')
+    if message.content.startswith('.link'):
+        embed = discord.Embed(title="Tile", description="Desc", color=0x00ff00)
+        embed.add_field(name="Field1", value="hi", inline=False)
+        embed.add_field(name="Field2", value="hi2", inline=False)
+        mess = await message.channel.send(embed=embed) 
     if message.content.startswith('.stats'):
         args = message.content.split(' ')
         if len(args) == 2:
@@ -55,14 +60,5 @@ async def on_message(message):
                 if args[1].isdigit():
                     count = int(args[1]) + 1
                     deleted = await message.channel.purge(limit=count, check=is_not_pinned)
-
-
-@client.event
-async def on_message(message):
-    if message.content.startswith('.link'):
-        embed = discord.Embed(title="Tile", description="Desc", color=0x00ff00)
-        embed.add_field(name="Field1", value="hi", inline=False)
-        embed.add_field(name="Field2", value="hi2", inline=False)
-        mess = await message.channel.send(embed=embed)
 
 client.run(str(token))
