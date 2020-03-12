@@ -16,7 +16,7 @@ async def on_ready():
 
 async def status_task():
     while True:
-        await client.change_presence(activity=discord.Game('.help1'), status=discord.Status.online)
+        await client.change_presence(activity=discord.Game('.help'), status=discord.Status.online)
 
 
 
@@ -31,7 +31,7 @@ async def on_message(message):
     if '.help' in message.content:  
         await message.channel.send('')
     if message.content.startswith('.link'):
-        embed=discord.Embed(title="discord.gg", 
+        embed=discord.Embed(title="discord.gg : подключить бота к своему серверу", 
                             url="https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624",
                             description='', 
                             color=0x8080ff)
