@@ -2,11 +2,9 @@ import asyncio
 import os
 import discord
 
-from discord.ext import commands
 from discord import Member
 
 client = discord.Client()
-client = commands.Bot(command_prefix='.')
 token = os.environ.get('BOT_TOKEN')
 
 
@@ -58,15 +56,13 @@ async def on_message(message):
                     deleted = await message.channel.purge(limit=count, check=is_not_pinned)
 
 
-@client.command()
-async def link(ctx):
-    embed=discord.Embed(title='discord.gg', 
-                        url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624', 
-                        color=0x8080ff)
-    embed.set_thumbnail(url='https://i.imgur.com/SbmwC1T.jpg')
-    embed.set_footer(text='Developer : Wizel')
-    
-    await ctx.send(embed=embed)
-
+@client.event
+async def on_message(message):
+    if message.content.startswith('.link'):
+        embed = discord.Embed(title="Tile", description="Desc", color=0x00ff00)
+        embed.add_field(name="Field1", value="hi", inline=False)
+        embed.add_field(name="Field2", value="hi2", inline=False)
+        await client.send_message(message.channel, embed=embed)
+        mess = await message.channel.send(embed=embed)
 
 client.run(str(token))
