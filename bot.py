@@ -17,7 +17,7 @@ async def on_ready():
 async def status_task():
     while True:
         await client.change_presence(activity=discord.Game('.help'), status=discord.Status.online)
-        
+
 
 
 def is_not_pinned(mess):
@@ -64,6 +64,5 @@ async def on_message(message):
         embed.add_field(name="Field1", value="hi", inline=False)
         embed.add_field(name="Field2", value="hi2", inline=False)
         await client.send_message(message.channel, embed=embed)
-        mess = await message.channel.send(embed=embed)
 
 client.run(str(token))
