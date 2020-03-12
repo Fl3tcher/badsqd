@@ -17,7 +17,7 @@ async def on_ready():
 
 async def status_task():
     while True:
-        await client.change_presence(activity=discord.Game('.help'), status=discord.Status.online)
+        await client.change_presence(activity=discord.Game('.1'), status=discord.Status.online)
 
 
 def is_not_pinned(mess):
