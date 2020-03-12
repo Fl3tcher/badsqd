@@ -25,17 +25,6 @@ def is_not_pinned(mess):
     return not mess.pinned
 
 
-@client.command()
-async def link(ctx):
-    embed=discord.Embed(title='discord.gg', 
-                        url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624', 
-                        color=0x8080ff)
-    embed.set_thumbnail(url='https://i.imgur.com/SbmwC1T.jpg')
-    embed.set_footer(text='Developer : Wizel')
-    
-    await ctx.send(embed=embed)
-
-
 @client.event
 async def on_message(message):
     if message.author.bot:
@@ -67,5 +56,17 @@ async def on_message(message):
                 if args[1].isdigit():
                     count = int(args[1]) + 1
                     deleted = await message.channel.purge(limit=count, check=is_not_pinned)
+
+
+@client.command()
+async def link(ctx):
+    embed=discord.Embed(title='discord.gg', 
+                        url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624', 
+                        color=0x8080ff)
+    embed.set_thumbnail(url='https://i.imgur.com/SbmwC1T.jpg')
+    embed.set_footer(text='Developer : Wizel')
+    
+    await ctx.send(embed=embed)
+
 
 client.run(str(token))
