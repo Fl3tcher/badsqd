@@ -6,7 +6,7 @@ from discord.ext import commands
 from discord import Member
 
 client = discord.Client()
-client = commands.Client(command_prefix='-'
+client = commands.Client(command_prefix='.')
 token = os.environ.get('BOT_TOKEN')
 
 
