@@ -31,11 +31,9 @@ async def on_message(message):
     if '.help' in message.content:  
         await message.channel.send('')
     if message.content.startswith('.link'):
-        embed=discord.Embed(title="# discord.gg", 
-                            url="https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624",
-                            description='', 
-                            color=0x8080ff)
+        embed=discord.Embed(color=0x8080ff)
         embed.set_thumbnail(url="https://i.imgur.com/SbmwC1T.jpg")
+        embed.add_field(name="discord.gg", url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624' value="", inline=True)
         embed.set_footer(text="Developer : Wizel")
         mess = await message.channel.send(embed=embed)
     if message.content.startswith('.stats'):
