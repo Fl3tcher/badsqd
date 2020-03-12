@@ -35,7 +35,7 @@ async def on_message(message):
         embed.set_author(name="discord.gg", 
                          url="https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624", 
                          icon_url="https://i.imgur.com/RYBI6Ad.png")
-        embed.set_thumbnail(url="https://i.imgur.com/SbmwC1T.jpg")
+        embed.set_thumbnail(url="https://s1.1zoom.ru/big3/413/358291-sepik.jpg")
         embed.set_footer(text="Developer : Wizel")
         mess = await message.channel.send(embed=embed)
     if message.content.startswith('.stats'):
