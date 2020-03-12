@@ -4,7 +4,7 @@ import discord
 
 from discord import Member
 
-client = commands.Client(command_prefix='.', case_insensitive=True)
+client = commands.Client(command_prefix='.')
 client = discord.Client()
 token = os.environ.get('BOT_TOKEN')
 
