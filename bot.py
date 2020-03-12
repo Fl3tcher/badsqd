@@ -29,14 +29,13 @@ async def on_message(message):
         return
     if '.help' in message.content:  
         await message.channel.send('')
-    if message.content.startswith('.link'):
-
+    if message.content('.link'):
         embed=discord.Embed(title="discord.gg", 
                             url="https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624", 
                             color=0x8080ff)
         embed.set_thumbnail(url="https://i.imgur.com/SbmwC1T.jpg")
-        embed.set_footer(text="Developer : Wizel\")
-        await self.bot.say(embed=embed)   
+        embed.set_footer(text="Developer : Wizel")
+        await message.channel.send(embed=embed)   
     if message.content.startswith('.stats'):
         args = message.content.split(' ')
         if len(args) == 2:
