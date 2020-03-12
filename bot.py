@@ -31,7 +31,7 @@ async def on_message(message):
     if '.help' in message.content:  
         await message.channel.send('')
     if message.content.startswith('.link'):
-        embed=discord.Embed(title="", url="https://discordapp.com/", color=0x8080ff)
+        embed=discord.Embed(color=0x8080ff)
         embed.set_author(name="discord.gg", 
                          url="https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624", 
                          icon_url="https://i.imgur.com/RYBI6Ad.png")
