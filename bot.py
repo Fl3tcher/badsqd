@@ -19,7 +19,6 @@ async def status_task():
         await client.change_presence(activity=discord.Game('.help'), status=discord.Status.online)
 
 
-
 def is_not_pinned(mess):
     return not mess.pinned
 
@@ -28,9 +27,9 @@ def is_not_pinned(mess):
 async def on_message(message):
     if message.author.bot:
         return
-    if '.help' in message.content:  
+    if '.he' in message.content:  
         await message.channel.send('')
-    if message.content.startswith('.link'):
+    if message.content.startswith('-link'):
         embed=discord.Embed(color=0x8080ff)
         embed.set_author(name='discord.gg', 
                          url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624',
@@ -38,7 +37,7 @@ async def on_message(message):
         embed.set_image(url='https://i.imgur.com/SbmwC1T.jpg')
         embed.set_footer(text='Developer : Wizel')
         mess = await message.channel.send(embed=embed)
-    if message.content.startswith('.stats'):
+    if message.content.startswith('-stats'):
         args = message.content.split(' ')
         if len(args) == 2:
             member: Member = discord.utils.find(lambda m: args[1] in m.name, message.guild.members)
@@ -56,7 +55,7 @@ async def on_message(message):
                     embed.add_field(name='Роли', value=role_name, inline=True)
                 embed.set_thumbnail(url=member.avatar_url)
                 mess = await message.channel.send(embed=embed)
-    if message.content.startswith('.clear'):
+    if message.content.startswith('/clear'):
         if message.author.permissions_in(message.channel).manage_messages:
             args = message.content.split(' ')
             if len(args) == 2:
