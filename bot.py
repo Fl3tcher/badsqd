@@ -5,7 +5,6 @@ import discord
 from discord import Member
 
 client = discord.Client()
-discord_url = 'https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624' 
 token = os.environ.get('BOT_TOKEN')
 
 
@@ -20,6 +19,7 @@ async def status_task():
         await client.change_presence(activity=discord.Game('.help'), status=discord.Status.online)
 
 
+
 def is_not_pinned(mess):
     return not mess.pinned
 
@@ -30,18 +30,15 @@ async def on_message(message):
         return
     if '.help' in message.content:  
         await message.channel.send('')
-    if message.content.startswith('.links'): # Command : links
+    if message.content.startswith('.link'):
         embed=discord.Embed(color=0x8080ff)
         embed.set_author(name='discord.gg', 
-                         url = discord_url,
+                         url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624',
                          icon_url='https://i.imgur.com/RYBI6Ad.png')
-        embed.set_author(name='telegram', 
-                         url='',
-                         icon_url='')
         embed.set_image(url='https://i.imgur.com/SbmwC1T.jpg')
         embed.set_footer(text='Developer : Wizel')
         mess = await message.channel.send(embed=embed)
-    if message.content.startswith('.stats'): # Command : statistics
+    if message.content.startswith('.stats'):
         args = message.content.split(' ')
         if len(args) == 2:
             member: Member = discord.utils.find(lambda m: args[1] in m.name, message.guild.members)
@@ -59,7 +56,7 @@ async def on_message(message):
                     embed.add_field(name='Роли', value=role_name, inline=True)
                 embed.set_thumbnail(url=member.avatar_url)
                 mess = await message.channel.send(embed=embed)
-    if message.content.startswith('.clear'): # Command : clear
+    if message.content.startswith('.clear'):
         if message.author.permissions_in(message.channel).manage_messages:
             args = message.content.split(' ')
             if len(args) == 2:
