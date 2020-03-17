@@ -37,7 +37,7 @@ async def on_message(message):
         embed.set_image(url='https://i.imgur.com/SbmwC1T.jpg')
         embed.set_footer(text='Developer : Wizel')
         mess = await message.channel.send(embed=embed)
-    if message.content.startswith('-stats'):
+    if message.content.startswith('/stats'):
         args = message.content.split(' ')
         if len(args) == 2:
             member: Member = discord.utils.find(lambda m: args[1] in m.name, message.guild.members)
@@ -57,10 +57,6 @@ async def on_message(message):
                 mess = await message.channel.send(embed=embed)
     if message.content.startswith('/clear'):
         if message.author.permissions_in(message.channel).manage_messages:
-            args = message.content.split(' ')
-            if len(args) == 2:
-                if args[1].isdigit():
-                    count = int(args[1]) + 1
-                    deleted = await message.channel.purge(limit=count, check=is_not_pinned)
+            deleted = await message.channel.purge(limit=20, check=is_not_pinned)
 
 client.run(str(token))
