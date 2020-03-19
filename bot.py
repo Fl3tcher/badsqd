@@ -36,8 +36,7 @@ async def on_message(message):
                 if args[1].isdigit():
                     urlr = int(args[1]) + 1
                     embed=discord.Embed(color=0x8080ff)
-                    embed.set_author(name='discord.gg', 
-                                     url=urlr,
+                    embed.set_author(name=urlr, 
                                      icon_url='https://i.imgur.com/RYBI6Ad.png')
                     embed.set_image(url='https://i.imgur.com/SbmwC1T.jpg')
                     embed.set_footer(text='Developer : Wizel')
