@@ -29,14 +29,19 @@ async def on_message(message):
         return
     if '.he' in message.content:  
         await message.channel.send('')
-    if message.content.startswith('>link'): #Вывод ссылки с приглашением бота на свой сервер
-        embed=discord.Embed(color=0x8080ff)
-        embed.set_author(name='discord.gg', 
-                         url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624',
-                         icon_url='https://i.imgur.com/RYBI6Ad.png')
-        embed.set_image(url='https://i.imgur.com/SbmwC1T.jpg')
-        embed.set_footer(text='Developer : Wizel')
-        mess = await message.channel.send(embed=embed)
+    if message.content.startswith('>emb'): #Embed  
+        if message.author.permissions_in(message.channel).manage_messages:
+            args = message.content.split(' ')
+            if len(args) == 2:
+                if args[1].isdigit():
+                    count = int(args[1]) + 1
+                    embed=discord.Embed(color=0x8080ff)
+                    embed.set_author(name='discord.gg', 
+                                     url=count,
+                                     icon_url='https://i.imgur.com/RYBI6Ad.png')
+                    embed.set_image(url='https://i.imgur.com/SbmwC1T.jpg')
+                    embed.set_footer(text='Developer : Wizel')
+                    mess = await message.channel.send(embed=embed)
     if message.content.startswith('>stats'): #Статистика пользователя на сервере
         args = message.content.split(' ')
         if len(args) == 2:
@@ -55,14 +60,22 @@ async def on_message(message):
                     embed.add_field(name='Роли', value=role_name, inline=True)
                 embed.set_thumbnail(url=member.avatar_url)
                 mess = await message.channel.send(embed=embed)
-    if message.content.startswith('>cmsg'): #Очистка сообщений в текстовом канале сервера  
+    if message.content.startswith('>link'): #Вывод ссылки с приглашением бота на свой сервер
+        embed=discord.Embed(color=0x8080ff)
+        embed.set_author(name='discord.gg', 
+                         url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624',
+                         icon_url='https://i.imgur.com/RYBI6Ad.png')
+        embed.set_image(url='https://i.imgur.com/SbmwC1T.jpg')
+        embed.set_footer(text='Developer : Wizel')
+        mess = await message.channel.send(embed=embed)
+    if message.content.startswith('>clear'): #Очистка сообщений в текстовом канале сервера  
         if message.author.permissions_in(message.channel).manage_messages:
             args = message.content.split(' ')
             if len(args) == 2:
                 if args[1].isdigit():
                     count = int(args[1]) + 1
                     deleted = await message.channel.purge(limit=count, check=is_not_pinned)
-    if message.content.startswith('>clear'):
+    if message.content.startswith('>cmsg'):
         if message.author.permissions_in(message.channel).manage_messages:
             deleted = await message.channel.purge(limit=10, check=is_not_pinned)
 
