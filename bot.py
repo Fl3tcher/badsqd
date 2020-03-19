@@ -34,10 +34,10 @@ async def on_message(message):
             args = message.content.split(' ')
             if len(args) == 2:
                 if args[1].isdigit():
-                    count = int(args[1]) + 1
+                    urlr = int(args[1]) + 1
                     embed=discord.Embed(color=0x8080ff)
                     embed.set_author(name='discord.gg', 
-                                     url=count,
+                                     url=urlr,
                                      icon_url='https://i.imgur.com/RYBI6Ad.png')
                     embed.set_image(url='https://i.imgur.com/SbmwC1T.jpg')
                     embed.set_footer(text='Developer : Wizel')
