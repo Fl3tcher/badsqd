@@ -16,7 +16,7 @@ async def on_ready():
 
 async def status_task():
     while True:
-        await client.change_presence(activity=discord.Game('>1help'), status=discord.Status.online)
+        await client.change_presence(activity=discord.Game('/help'), status=discord.Status.online)
 
 
 def is_not_pinned(mess):
@@ -27,26 +27,22 @@ def is_not_pinned(mess):
 async def on_message(message):
     if message.author.bot:
         return
-    if '.he' in message.content:  
+    if 'commands' in message.content:  
         await message.channel.send('')
-    if message.content.startswith('>emb'): #Embed  
-        if message.author.permissions_in(message.channel).manage_messages:
-            args = message.content.split(' ')
-            if len(args) == 2:
-                if args[1].isdigit():
-                    urlr = int(args[1]) + 1
-                    embed=discord.Embed(color=0x8080ff)
-                    embed.set_author(name=urlr, 
-                                     icon_url='https://i.imgur.com/RYBI6Ad.png')
-                    embed.set_image(url='https://i.imgur.com/SbmwC1T.jpg')
-                    embed.set_footer(text='Developer : Wizel')
-                    mess = await message.channel.send(embed=embed)
-    if message.content.startswith('>stats'): #Статистика пользователя на сервере
+    if message.content.startswith(':help'): # Help on commands in the bot
+        embed=discord.Embed(color=0x8080ff)
+        embed.set_author(name='discord.gg', 
+                         url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624',
+                         icon_url='https://i.imgur.com/RYBI6Ad.png')
+        embed.set_image(url='https://i.imgur.com/SbmwC1T.jpg')
+        embed.set_footer(text='Developer : Wizel')
+        mess = await message.channel.send(embed=embed)
+    if message.content.startswith(':stats'): # User statistics on the server
         args = message.content.split(' ')
         if len(args) == 2:
             member: Member = discord.utils.find(lambda m: args[1] in m.name, message.guild.members)
             if member:
-                embed = discord.Embed(title='Информация'.format(member.name),
+                embed = discord.Embed(title='`Информация`'.format(member.name),
                                       description='BAD: Полная информация о пользователе {}'.format(member.mention),
                                       color=0x8080ff)
                 embed.add_field(name='Дата входа на сервер', value=member.joined_at.strftime('%d/%m/%Y'),
@@ -59,7 +55,7 @@ async def on_message(message):
                     embed.add_field(name='Роли', value=role_name, inline=True)
                 embed.set_thumbnail(url=member.avatar_url)
                 mess = await message.channel.send(embed=embed)
-    if message.content.startswith('>link'): #Вывод ссылки с приглашением бота на свой сервер
+    if message.content.startswith(':link'): # Invite a bot to your server
         embed=discord.Embed(color=0x8080ff)
         embed.set_author(name='discord.gg', 
                          url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624',
@@ -67,15 +63,8 @@ async def on_message(message):
         embed.set_image(url='https://i.imgur.com/SbmwC1T.jpg')
         embed.set_footer(text='Developer : Wizel')
         mess = await message.channel.send(embed=embed)
-    if message.content.startswith('>clear'): #Очистка сообщений в текстовом канале сервера  
+    if message.content.startswith(':clear'): # Clearing messages in the server text channel
         if message.author.permissions_in(message.channel).manage_messages:
-            args = message.content.split(' ')
-            if len(args) == 2:
-                if args[1].isdigit():
-                    count = int(args[1]) + 1
-                    deleted = await message.channel.purge(limit=count, check=is_not_pinned)
-    if message.content.startswith('>cmsg'):
-        if message.author.permissions_in(message.channel).manage_messages:
-            deleted = await message.channel.purge(limit=10, check=is_not_pinned)
+            deleted = await message.channel.purge(limit=10, check=is_not_pinned) 
 
 client.run(str(token))
