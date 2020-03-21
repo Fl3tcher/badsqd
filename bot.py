@@ -30,8 +30,9 @@ async def on_message(message):
     if 'commands' in message.content:  
         await message.channel.send('')
     if message.content.startswith('.help'): # Help on commands in the bot
-        embed=discord.Embed(title='Помощь по серверу')
-        embed.add_field(name='> ` Модерирование `'
+        embed=discord.Embed(title='Помощь по серверу',
+                            color=0x8080ff)
+        embed.add_field(name='> ` Модерирование `',
                         value='.clear')
         mess = await message.channel.send(embed=embed)
     if message.content.startswith('.user'): # User statistics on the server
