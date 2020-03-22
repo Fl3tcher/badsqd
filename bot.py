@@ -43,8 +43,7 @@ async def on_message(message):
             member: Member = discord.utils.find(lambda m: args[1] in m.name, message.guild.members)
             if member:
                 embed = discord.Embed(title='Информация'.format(member.name),
-                                      description='BAD: Полная информация о пользователе {}'.format(member.mention),
-                                      color=0x8080ff)
+                                      description='BAD: Полная информация о пользователе {}'.format(member.mention))
                 embed.add_field(name='Дата входа на сервер', value=member.joined_at.strftime('%d/%m/%Y'),
                                 inline=True)
                 role_name = ''
@@ -56,7 +55,7 @@ async def on_message(message):
                 embed.set_thumbnail(url=member.avatar_url)
                 mess = await message.channel.send(embed=embed)
     if message.content.startswith('.link'): # Invite a bot to your server
-        embed=discord.Embed(color=0x8080ff)
+        embed=discord.Embed( )
         embed.set_author(name='discord.gg', 
                          url='https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624',
                          icon_url='https://i.imgur.com/RYBI6Ad.png')
