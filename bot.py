@@ -30,8 +30,8 @@ async def on_message(message):
     if 'commands' in message.content:  
         await message.channel.send('')
     if message.content.startswith('.help'): # Help on commands in the bot
-        embed=discord.Embed(title='Commands',
-                            description='Для получения дополнительной информации о конкретной команде используйте .help {command}')
+        embed=discord.Embed(description='Для получения дополнительной информации о конкретной команде используйте .help {command}')
+        embed.set_author(name="Commands")
         embed.add_field(name='Модерирование',
                         value='`mute` `ban` `clear`')
         mess = await message.channel.send(embed=embed)
