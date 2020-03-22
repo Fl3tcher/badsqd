@@ -33,8 +33,8 @@ async def on_message(message):
         embed=discord.Embed(title='Помощь по серверу',
                             color=0x8080ff)
         embed.add_field(name='Модерирование',
-                        value='> .clear'
-                        '')
+                        value='.clear'
+                        'Очистка сообщений в текстовом канале')
         mess = await message.channel.send(embed=embed)
     if message.content.startswith('.user'): # User statistics on the server
         args = message.content.split(' ')
