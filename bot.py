@@ -37,12 +37,10 @@ async def on_message(message):
         embed.add_field(name='Модерирование',
                         value='`mute` `ban` `clear`')
         mess = await message.channel.send(embed=embed)
-            if message.content.startswith('.help stats'):
-                e
+            if message.content.startswith('.help link'):
                 embed=discord.Embed(description='Хотите подключить бота на свой сервер дискорд? Вам пожет данная команда: `.link`')
                 embed.set_author(name="& Links")
-                mess = await message.channel.send(embed=embed)
-               
+                mess = await message.channel.send(embed=embed)            
     if message.content.startswith('.stats'): # User statistics on the server
         args = message.content.split(' ')
         if len(args) == 2:
