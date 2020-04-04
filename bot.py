@@ -39,7 +39,7 @@ async def on_message(message):
         mess = await message.channel.send(embed=embed)
     if message.content.startswith("..help link"):
         embed=discord.Embed(description="Хотите подключить бота на свой сервер дискорд? Вам пожет команда : `.link`")
-        embed.set_author(name="# Links")
+        embed.set_author(name="& Links")
         embed.add_field(name="Другие команды в этом разделе",
                         value="`stats`")
         mess = await message.channel.send(embed=embed)            
