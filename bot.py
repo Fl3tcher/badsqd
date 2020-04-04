@@ -33,10 +33,16 @@ async def on_message(message):
         embed=discord.Embed(description="Для получения дополнительной информации о конкретной команде используйте `..help {command}`")
         embed.set_author(name="# Commands")
         embed.add_field(name="Основные",
-                        value="`stats` `link`")
+                        value="`stats` `coin` `link`")
         embed.add_field(name="Модерирование",
                         value="`mute` `ban` `clear`")
         mess = await message.channel.send(embed=embed)
+    if message.content.startswith("..help stats"):
+        embed=discord.Embed(description="Cтатистика пользователя на сервере : `.stats {user}`")
+        embed.set_author(name="& Stats")
+        embed.add_field(name="Другие команды в этом разделе",
+                        value="`link` `coin`")
+        mess = await message.channel.send(embed=embed)   
     if message.content.startswith("..help link"):
         embed=discord.Embed(description="Хотите подключить бота на свой сервер дискорд? Вам пожет команда : `.link`")
         embed.set_author(name="& Links")
