@@ -47,7 +47,7 @@ async def on_message(message):
         embed=discord.Embed(description="Хотите подключить бота на свой сервер дискорд? Вам пожет команда : `.link`")
         embed.set_author(name="& Links")
         embed.add_field(name="Другие команды в этом разделе",
-                        value="`stats`")
+                        value="`stats` `coin`")
         mess = await message.channel.send(embed=embed)            
     if message.content.startswith(".stats"): # User statistics on the server
         args = message.content.split(" ")
@@ -69,9 +69,9 @@ async def on_message(message):
     if message.content.startswith(".link"): # Invite a bot to your server
         embed=discord.Embed( )
         embed.set_author(name="discord.gg", 
-                         url="https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=26624",
+                         url="https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=8",
                          icon_url="https://i.imgur.com/RYBI6Ad.png")
-        embed.set_image(url="https://i.imgur.com/SbmwC1T.jpg")
+        embed.set_image(url="https://i.imgur.com/bSFilZgg.jpg")
         embed.set_footer(text="Developer : Wizel")
         mess = await message.channel.send(embed=embed)
     if message.content.startswith(".clear"): # Clearing messages in the server text channel
