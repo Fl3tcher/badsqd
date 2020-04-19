@@ -71,7 +71,7 @@ async def on_message(message):
         embed.set_author(name="discord.gg", 
                          url="https://discordapp.com/oauth2/authorize?&client_id=669249748909162513&scope=bot&permissions=8",
                          icon_url="https://i.imgur.com/RYBI6Ad.png")
-        embed.set_image(url="https://i.imgur.com/bSFilZgg.jpg")
+        embed.set_image(url="https://i.imgur.com/QrbERKK.png")
         embed.set_footer(text="Developer : Wizel")
         mess = await message.channel.send(embed=embed)
     if message.content.startswith(".clear"): # Clearing messages in the server text channel
