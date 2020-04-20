@@ -54,8 +54,8 @@ async def on_message(message):
         if len(args) == 2:
             member: Member = discord.utils.find(lambda m: args[1] in m.name, message.guild.members)
             if member:
-                embed = discord.Embed(title="Информация".format(member.name),
-                                      description="BAD: Полная информация о пользователе {}".format(member.mention))
+                embed = discord.Embed(title="& Stats".format(member.name),
+                                      description="Информация о пользователе {}".format(member.mention))
                 embed.add_field(name="Дата входа на сервер", value=member.joined_at.strftime("%d/%m/%Y"),
                                 inline=True)
                 role_name = ""
